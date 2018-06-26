@@ -1,10 +1,12 @@
 <h1>글 봐!!</h1>
+
 <%= @post.id %>번째 글
 <%= @post.title %>
 <%= @post.content %>
 
-<a href="/posts/<%= @post.id %>/edit">수정하기</a>
-<a href="/posts/<%= @post.id %>" data-method="delete" data-confirm="삭제할래?">삭제하기</a>
+<%= link_to 'edit', edit_post_path(@post)%>
+<%= link_to 'delete', @post, method: :delete, data: [confirm: '지울거니?']%>
+
 <hr />
 
 <form action="/posts/<%= @post.id%>/comments" method="post">

@@ -1,8 +1,26 @@
 <h1>수정해</h1>
-<form action="/posts/<%=@post.id%>/update" method="post">
+
+<%= render 'form' %>
+
+<form action="/posts/<%=@post.id%>" method="post">
   <input type="text" name="title" value="<%=@post.title%>"/> <br />
   <textarea name="content"><%=@post.content%></textarea> <br />
   <input type="hidden" name="_method" value="put" />
   <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
   <input type="submit" />
 </form>
+
+<%#= form_tag("/posts/#{@post.id}", method: 'put') do %>
+<%#= text_field_tag :title, @post.title %>
+<%#= text_area_tag :content, @post.content %>
+<%#= submit_tag "뿅" %>
+<%#end%>
+
+
+<!--이때는 @post에 값이 비어있으니까 자동으로 새로 글쓰는 라우트로 자동으로보냄
+edit에선 @post가 값이 있으므로 들어있는 값을 textarea에 뽑아서 보여주고 업데이트 라우트를 실행시킴 -->
+<%#= form_for @post do |f| %>
+<%#= f.text_field :title%>
+<%#= f.text_area :content%>
+<%#= f.submit%>
+<%#end%>
